@@ -2,8 +2,7 @@
 
 namespace PractiseConsole
 {
-    
-
+ 
     class Program
     {
         public delegate int Roll();
@@ -12,8 +11,7 @@ namespace PractiseConsole
         {
 
 
-
-            Roll rollDice = () => {
+            Roll rollDice = () => { //random number gen
             
                 Random random = new Random();
                 return random.Next(1, 7);
@@ -46,8 +44,7 @@ namespace PractiseConsole
 
             Console.WriteLine("\nThe total sum of rolled dice is " + total + ".");
 
-         
-            
+                  
             
             switch (total)
             {
@@ -120,9 +117,9 @@ namespace PractiseConsole
 
             }
 
-            int[,] allPossibleCombinations = new int[rows, 2]; //Created 2d array for storing all the possible numbers
+            //int[,] allPossibleCombinations = new int[rows, 2]; //Created 2d array for storing all the possible numbers
 
-            Console.WriteLine("-------**----------");
+            Console.WriteLine("-------**-------");
 
             //Console.WriteLine("Dice A     Dice 2");
 
@@ -130,153 +127,21 @@ namespace PractiseConsole
 
             Console.WriteLine("Printing all the possible combinations of the dices ('{0}') when the sum is {1}:\n", rows ,total);
 
-
             Console.WriteLine("------");
-            while (true)
+
+            int[,] arrayOfPossibleCombinations = ArrayOfPossibileCombs(num); //storing returned 2d array from method
+
+
+            for (int i = 0; i < arrayOfPossibleCombinations.GetLength(0); i++)
             {
-                if (rows == 1 && num == 2)
+                for (int j = 0; j < arrayOfPossibleCombinations.GetLength(1); j++)
                 {
-                    allPossibleCombinations[0, 0] = 1;
-                    allPossibleCombinations[0, 1] = 1;
+                    Console.Write("|" + arrayOfPossibleCombinations[i, j] + "|");
 
                 }
-
-                else if (rows == 2 && num == 3)
-                {
-                    allPossibleCombinations[0, 0] = 1;
-                    allPossibleCombinations[0, 1] = 2;
-                    allPossibleCombinations[1, 0] = 2;
-                    allPossibleCombinations[1, 1] = 1;
-                }
-
-                else if (rows == 3 && num == 4)
-                {
-                    allPossibleCombinations[0, 0] = 1;
-                    allPossibleCombinations[0, 1] = 3;
-                    allPossibleCombinations[1, 0] = 2;
-                    allPossibleCombinations[1, 1] = 2;
-                    allPossibleCombinations[2, 0] = 3;
-                    allPossibleCombinations[2, 1] = 1;
-                }
-
-                else if (rows == 4 && num == 5)
-                {
-                    allPossibleCombinations[0, 0] = 1;
-                    allPossibleCombinations[0, 1] = 4;
-                    allPossibleCombinations[1, 0] = 4;
-                    allPossibleCombinations[1, 1] = 1;
-                    allPossibleCombinations[2, 0] = 2;
-                    allPossibleCombinations[2, 1] = 3;
-                    allPossibleCombinations[3, 0] = 3;
-                    allPossibleCombinations[3, 1] = 2;
-                }
-
-                else if (rows == 5 && num == 6)
-                {
-                    allPossibleCombinations[0, 0] = 1;
-                    allPossibleCombinations[0, 1] = 5;
-                    allPossibleCombinations[1, 0] = 5;
-                    allPossibleCombinations[1, 1] = 1;
-                    allPossibleCombinations[2, 0] = 3;
-                    allPossibleCombinations[2, 1] = 3;
-                    allPossibleCombinations[3, 0] = 4;
-                    allPossibleCombinations[3, 1] = 2;
-                    allPossibleCombinations[4, 0] = 2;
-                    allPossibleCombinations[4, 1] = 4;
-                }
-
-                else if (rows == 6 && num == 7)
-                {
-                    allPossibleCombinations[0, 0] = 1;
-                    allPossibleCombinations[0, 1] = 6;
-                    allPossibleCombinations[1, 0] = 6;
-                    allPossibleCombinations[1, 1] = 1;
-                    allPossibleCombinations[2, 0] = 4;
-                    allPossibleCombinations[2, 1] = 3;
-                    allPossibleCombinations[3, 0] = 3;
-                    allPossibleCombinations[3, 1] = 4;
-                    allPossibleCombinations[4, 0] = 5;
-                    allPossibleCombinations[4, 1] = 2;
-                    allPossibleCombinations[5, 0] = 2;
-                    allPossibleCombinations[5, 1] = 5;
-                }
-
-                else if (rows == 5 && num == 8)
-                {
-                    allPossibleCombinations[0, 0] = 2;
-                    allPossibleCombinations[0, 1] = 6;
-                    allPossibleCombinations[1, 0] = 6;
-                    allPossibleCombinations[1, 1] = 2;
-                    allPossibleCombinations[2, 0] = 4;
-                    allPossibleCombinations[2, 1] = 4;
-                    allPossibleCombinations[3, 0] = 5;
-                    allPossibleCombinations[3, 1] = 3;
-                    allPossibleCombinations[4, 0] = 3;
-                    allPossibleCombinations[4, 1] = 5;
-                }
-
-                else if (rows == 4 && num == 9)
-                {
-                    allPossibleCombinations[0, 0] = 5;
-                    allPossibleCombinations[0, 1] = 4;
-                    allPossibleCombinations[1, 0] = 4;
-                    allPossibleCombinations[1, 1] = 5;
-                    allPossibleCombinations[2, 0] = 6;
-                    allPossibleCombinations[2, 1] = 3;
-                    allPossibleCombinations[3, 0] = 3;
-                    allPossibleCombinations[3, 1] = 6;
-                }
-
-                else if (rows == 3 && num == 10)
-                {
-                    allPossibleCombinations[0, 0] = 5;
-                    allPossibleCombinations[0, 1] = 5;
-                    allPossibleCombinations[1, 0] = 6;
-                    allPossibleCombinations[1, 1] = 4;
-                    allPossibleCombinations[2, 0] = 4;
-                    allPossibleCombinations[2, 1] = 6;
-                    
-                }
-
-                else if (rows == 2 && num == 11)
-                {
-                    allPossibleCombinations[0, 0] = 6;
-                    allPossibleCombinations[0, 1] = 5;
-                    allPossibleCombinations[1, 0] = 5;
-                    allPossibleCombinations[1, 1] = 6;
-                }
-
-                else if (rows == 1 && num == 12)
-                {
-                    allPossibleCombinations[0, 0] = 6;
-                    allPossibleCombinations[0, 1] = 6;
-                }
-
-                break;
-
-            }
-
-            for (int i = 0; i < allPossibleCombinations.GetLength(0); i++)
-            {
-                for (int j = 0; j < allPossibleCombinations.GetLength(1); j++)
-                {
-                    Console.Write("|" + allPossibleCombinations[i,j] + "|");
-                    
-
-
-                }
-                Console.Write("\n------");
-
+                Console.Write("\n-----");
                 Console.WriteLine();
-                
-
-            }
-
-                
-                
-          
-
-                       
+            }         
 
 
             Console.ReadLine();
@@ -287,6 +152,35 @@ namespace PractiseConsole
             Console.ForegroundColor = color;
             Console.WriteLine(message);
             Console.ResetColor();
+        }
+
+        private static int[,] ArrayOfPossibileCombs(int sum)
+        {
+            Dictionary<int, int[,]> dicForArray = DictionaryOfCombs();
+
+            int[,] arrayOfCombinations = dicForArray[sum];
+    
+            return arrayOfCombinations;
+        }
+
+        private static Dictionary<int, int[,]> DictionaryOfCombs()
+        {
+
+            Dictionary<int, int[,]> keyValuePairs = new Dictionary<int, int[,]>();
+            keyValuePairs.Add(2, new int[,] { { 1, 1 } });
+            keyValuePairs.Add(3, new int[,] { { 2, 1 }, { 1, 2 } });
+            keyValuePairs.Add(4, new int[,] { { 2, 2 }, { 1, 3 }, { 3, 1 } });
+            keyValuePairs.Add(5, new int[,] { { 4, 1 }, { 1, 4 }, { 2, 3 }, { 3, 2 } });
+            keyValuePairs.Add(6, new int[,] { { 1, 5 }, { 5, 1 }, { 3, 3 }, { 4, 2 }, { 2, 4 } });
+            keyValuePairs.Add(7, new int[,] { { 1, 6 }, { 6, 1 }, { 3, 4 }, { 4, 3 }, { 2, 5 }, { 5, 2 } });
+            keyValuePairs.Add(8, new int[,] { { 1, 7 }, { 7, 1 }, { 5, 3 }, { 3, 5 }, { 4, 4 } });
+            keyValuePairs.Add(9, new int[,] { { 6, 3 }, { 3, 6 }, { 5, 4 }, { 4, 5 } });
+            keyValuePairs.Add(10, new int[,] { { 6, 4 }, { 4, 6 }, { 5, 5 } });
+            keyValuePairs.Add(11, new int[,] { { 6, 5 }, { 5, 6 } });
+            keyValuePairs.Add(12, new int[,] { { 6, 6 } });
+
+
+            return keyValuePairs;
         }
 
 
@@ -303,30 +197,6 @@ namespace PractiseConsole
 
 
 }
-
-
-//int[] aArray = { 1, 2,3,4,5,6};
-
-//int[] bArray = { 1, 2, 3,4,5,6};
-
-////int[] cArray = { 1, 2, 3, 4, 5, 6 };
-
-
-
-//int[,] newArray = new int[6, 6];
-
-
-//for (int i = 0; i < aArray.Length; i++)
-//{
-//    for (int j = 0; j < bArray.Length; j++)
-//    {
-
-//        newArray[i, j] = aArray[i] + bArray[j];
-//        Console.Write(newArray[i, j] + " ");
-
-//    }
-//    Console.WriteLine();
-//}
 
 
 
